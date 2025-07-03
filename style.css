@@ -8,4 +8,55 @@
 
 #spaceToDraw {
     border: 1px solid black;
+    display: flex;
+    flex-wrap: wrap;
+    justify-self: flex-end;
+    align-self: flex-end;
+}
+
+#columnLeft 
+{   display: flex;
+    border: red 10px solid;
+    justify-content: space-between;
+    
+
+    padding: 28px 128px;
+}
+
+#options
+{
+    display: flex;
+    border: 1px solid black;
+    align-self: flex-start;
+    
+    justify-content: center;
+    margin-top: 64px;
+    flex-flow: column;
+    padding: 8px;
+}
+
+#optColor
+{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    
+}
+#iptColor
+{
+    margin: 8px 46px;
+    width: 66px;
+    
+}
+#iptSize
+{
+    width: 60px;
+}
+
+#erase
+{
+    width: 58px;
+    border: 1px black solid;
+    height:  23px;
+    margin-left: -40px;
 }

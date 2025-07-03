@@ -1,20 +1,85 @@
 const spaceElement = document.querySelector("#spaceToDraw");
-spaceElement.style.height = "160px"
-spaceElement.style.width = "160px"
+const inputElement = document.querySelector("#iptSize");
+const btnElement = document.querySelector("#btn");
+const columElement = document.querySelector("#columnLeft");
+const iptColor = document.querySelector("#iptColor");
+const eraseElement = document.querySelector("#erase");
 
 
-for (let i = 0; i < 160; i++){
-const pixel = document.createElement("div")
+let toColor = "black";
+iptColor.addEventListener("input",function()
+{
+    toColor = iptColor.value;
+})
+eraseElement.addEventListener("click",() => toColor = "white");
+const windowSize = 480;
 
-spaceElement.appendChild(pixel);
-pixel.style.display = "flex";
-pixel.style.border = "1px solid red";
-pixel.style.width = "8px";
-pixel.style.height = "8px";
-pixel.addEventListener("click", function(){
-    pixel.style.border = "1px solid blue";
-    pixel.style.backgroundColor = "blue";
+let iptVal = 16;
+
+let newSpace = null;
+function draw(pixel)
+{
+    pixel.style.border = "1px solid black";
+    pixel.style.backgroundColor = toColor;
+}
+btnElement.addEventListener("click",function()
+{
+    
+    iptVal = Number(inputElement.value);
+    if (isNaN(iptVal)){alert("ingresa un número válido");}
+    else
+    spaceElement.remove();
+
+   if (newSpace) { newSpace.remove();}
+    newSpace = document.createElement("div");
+    newSpace.style.height = windowSize +"px";
+    newSpace.style.width = windowSize +"px";
+    newSpace.style.border = "1px solid black";
+    newSpace.style.display = "flex";
+    newSpace.style.flexWrap = "wrap";
+     
+ 
+    columElement.appendChild(newSpace);
+
+    
+    
+    for (let i = 0; i < iptVal*iptVal; i++){
+        
+        const pixel = document.createElement("div")
+
+        newSpace.appendChild(pixel);
+        pixel.style.display = "flex";
+        pixel.style.border = "1px solid black";
+        pixel.style.width = (windowSize/iptVal - 2) + "px";
+        pixel.style.height = (windowSize/iptVal - 2) + "px";
+     pixel.addEventListener("click", function(){
+        draw(pixel);
 }
 
 );
 }
+}) 
+
+
+//------
+
+   for (let i = 0; i < iptVal*iptVal; i++){
+        
+        const pixel = document.createElement("div")
+
+        spaceElement.appendChild(pixel);
+        pixel.style.display = "flex";
+        pixel.style.border = "1px solid black";
+        pixel.style.width = (windowSize/iptVal - 2) + "px";
+        pixel.style.height = (windowSize/iptVal - 2) + "px";
+     pixel.addEventListener("click", function(){
+        draw(pixel);
+}
+
+);
+}
+spaceElement.style.height = windowSize +"px";
+spaceElement.style.width = windowSize +"px";
+
+
+
