@@ -1,0 +1,11 @@
+#title {
+    display: flex;
+    justify-self: center;
+    color: lightblue;
+    background-color: darkslategrey;
+    padding: 10px;
+}
+
+#spaceToDraw {
+    border: 1px solid black;
+}
